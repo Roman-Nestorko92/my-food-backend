@@ -1,6 +1,10 @@
 {
   "name": "my-food-back",
   "version": "1.0.0",
+  "private": "true",
+  "engines": {
+    "node": ">=16.x"
+  },
   "description": "",
   "main": "app.js",
   "scripts": {
