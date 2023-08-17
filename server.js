@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 const app = require("./app");
 
-const { db_host } = require("./config");
+const { db_host } = process.env;
 
 mongoose
   .connect(db_host)
