@@ -6,20 +6,20 @@ const productsControllers = require("../../controllers/ProductControllers");
 
 router.get("/", productsControllers.getAllProducts);
 
-router.get("/:id", productsControllers.getOneProduct);
+// router.get("/:id", productsControllers.getOneProduct);
 
-router.post(
-  "/",
-  validateBody(schemas.addSchema),
-  productsControllers.postAddProduct
-);
+// router.post(
+//   "/",
+//   validateBody(schemas.addSchema),
+//   productsControllers.postAddProduct
+// );
 
-router.put(
-  "/:id",
-  validateBody(schemas.addSchema),
-  productsControllers.putUpdateProduct
-);
+// router.put(
+//   "/:id",
+//   validateBody(schemas.addSchema),
+//   productsControllers.putUpdateProduct
+// );
 
-router.delete("/:id", productsControllers.removeProduct);
+// router.delete("/:id", productsControllers.removeProduct);
 
 module.exports = router;
