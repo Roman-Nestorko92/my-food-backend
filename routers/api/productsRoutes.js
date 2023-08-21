@@ -1,25 +1,36 @@
 const express = require("express");
 const router = express.Router();
-const schemas = require("../../schemas/productsSchemas");
 const { validateBody } = require("../../utils");
+const { schemas } = require("../../modals/product");
 const productsControllers = require("../../controllers/ProductControllers");
+const { authtificate, isValidId } = require("../../middlewares");
+
+router.use(authtificate);
 
 router.get("/", productsControllers.getAllProducts);
 
-// router.get("/:id", productsControllers.getOneProduct);
+router.get("/:id", isValidId, productsControllers.getOneProduct);
 
-// router.post(
-//   "/",
-//   validateBody(schemas.addSchema),
-//   productsControllers.postAddProduct
-// );
+router.post(
+  "/",
+  validateBody(schemas.addSchema),
+  productsControllers.postAddProduct
+);
 
-// router.put(
-//   "/:id",
-//   validateBody(schemas.addSchema),
-//   productsControllers.putUpdateProduct
-// );
+router.put(
+  "/:id",
+  isValidId,
+  validateBody(schemas.addSchema),
+  productsControllers.putUpdateProduct
+);
 
-// router.delete("/:id", productsControllers.removeProduct);
+router.patch(
+  "/:id/favorite",
+  isValidId,
+  validateBody(schemas.updateFavoriteSchema),
+  productsControllers.putUpdateFavorite
+);
+
+router.delete("/:id", isValidId, productsControllers.removeProduct);
 
 module.exports = router;
