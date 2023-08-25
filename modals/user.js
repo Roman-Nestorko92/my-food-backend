@@ -8,7 +8,6 @@ const userSchema = new Schema(
   {
     name: {
       type: String,
-      required: true,
     },
     email: {
       type: String,
@@ -27,7 +26,6 @@ const userSchema = new Schema(
     },
     avatarURL: {
       type: String,
-      required: true,
     },
   },
   { versionKey: false, timestamps: true }
@@ -36,7 +34,6 @@ const userSchema = new Schema(
 userSchema.post("save", handleMongooseError);
 
 const userRegistrSchema = Joi.object({
-  name: Joi.string().required(),
   email: Joi.string().pattern(emailRedex).required(),
   password: Joi.string().min(4).required(),
 });
